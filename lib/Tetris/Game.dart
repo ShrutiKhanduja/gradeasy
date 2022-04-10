@@ -18,7 +18,7 @@ const GAME_AREA_BORDER_WIDTH = 2.0;
 const SUB_BLOCK_EDGE_WIDTH = 2.0;
 
 class Game extends StatefulWidget {
-  Game({required Key key}) : super(key: key);
+  Game({ required Key key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => GameState();
@@ -67,12 +67,13 @@ class GameState extends State<Game> {
     isGameOver = false;
     oldSubBlocks = <SubBlock>[];
 
-    RenderObject? renderBoxGame = _keyGameArea.currentContext?.findRenderObject();
+    final RenderObject renderBoxGame = _keyGameArea.currentContext!.findRenderObject()!  ;
+
 
     subBlockWidth =
-        (renderBoxGame.size.width - GAME_AREA_BORDER_WIDTH * 2) / BLOCKS_X;
+        (renderBoxGame.depth - GAME_AREA_BORDER_WIDTH * 2) / BLOCKS_X;
 
-    Provider.of<Data>(context).setNextBlock(getNewBlock());
+    Provider.of<Data>(context).setNextBlock(getNewBlock()!);
     block = getNewBlock()!;
 
     timer = Timer.periodic(duration, onPlay);
@@ -138,10 +139,10 @@ class GameState extends State<Game> {
         });
 
         block = Provider.of<Data>(context).nextBlock;
-        Provider.of<Data>(context).setNextBlock(getNewBlock());
+        Provider.of<Data>(context).setNextBlock(getNewBlock()!);
       }
 
-      action = null;
+      action ;
       updateScore();
     });
   }
@@ -226,18 +227,22 @@ class GameState extends State<Game> {
 
     // Current block
     block.subBlocks.forEach((subBlock) {
-      subBlocks.add(getPositionedSquareContainer(
-          subBlock.color, subBlock.x + block.x, subBlock.y + block.y));
+      subBlocks.add(Positioned(
+        child: getPositionedSquareContainer(
+            subBlock.color, subBlock.x + block.x, subBlock.y + block.y),
+      ));
     });
 
     // Old sub-blocks
     oldSubBlocks.forEach((oldSubBlock) {
-      subBlocks.add(getPositionedSquareContainer(
-          oldSubBlock.color, oldSubBlock.x, oldSubBlock.y));
+      subBlocks.add(Positioned(
+        child: getPositionedSquareContainer(
+            oldSubBlock.color, oldSubBlock.x, oldSubBlock.y),
+      ));
     });
 
     if (isGameOver) {
-      subBlocks.add(getGameOverRect());
+      subBlocks.add(Positioned(child: getGameOverRect()));
     }
 
     return Stack(

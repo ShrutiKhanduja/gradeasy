@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'EventsDescription.dart';
 import 'constants.dart';
 
 class EventsScreen extends StatefulWidget {
@@ -64,13 +65,18 @@ class _EventsScreenState extends State<EventsScreen> {
                            ],
                          ),
                          SizedBox(height:5),
-                         Container(
-                           height:SizeConfig.deviceHeight*0.04,
-                           width:SizeConfig.deviceWidth*0.4,
-                           decoration: BoxDecoration(color:Color.fromRGBO(4, 22, 48, 1),
-                             borderRadius: BorderRadius.all(Radius.circular(20))
+                         InkWell(
+                           onTap:(){
+                             Navigator.push(context,MaterialPageRoute(builder:(context)=>EventsDescription()));
+                           },
+                           child: Container(
+                             height:SizeConfig.deviceHeight*0.04,
+                             width:SizeConfig.deviceWidth*0.4,
+                             decoration: BoxDecoration(color:Color.fromRGBO(4, 22, 48, 1),
+                               borderRadius: BorderRadius.all(Radius.circular(20))
+                             ),
+                            child:Center(child: Text('Check out',style: GoogleFonts.signika(color:Colors.white,),))
                            ),
-                          child:Center(child: Text('Check out',style: GoogleFonts.signika(color:Colors.white,),))
                          )
                        ],
                      ),
