@@ -13,56 +13,34 @@ class Games extends StatefulWidget {
 class _GamesState extends State<Games> {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return
       Scaffold(
-        body: Container(
-          height:SizeConfig.deviceHeight*0.45,
-          width: SizeConfig.deviceWidth,
-          child: GridView(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 5,
-                mainAxisSpacing: 5,
-                mainAxisExtent: 150
-            ),
-            children: [
-              GestureDetector(
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>SnakeGame()));
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children:[
+              SizedBox(height:SizeConfig.deviceHeight*0.05),
+              Text('FUN ZONE',style: GoogleFonts.signika(color:Color.fromRGBO(4, 22, 48, 1),fontWeight: FontWeight.bold,fontSize: SizeConfig.deviceHeight*0.04),),
+              SizedBox(height:SizeConfig.deviceHeight*0.02),
+              InkWell(
+                onTap:(){
+                  Navigator.push(context,MaterialPageRoute(builder:(context)=>SnakeGame()));
                 },
-                child: Card(
-                  color: Colors.white,
-                  elevation: 5,
-                  child: Column(
+                child: Container(
+                    height:SizeConfig.deviceHeight*0.3,
 
-                      children:[
-                        Text('Compiler Design',style:GoogleFonts.pacifico(color:Color.fromRGBO(4, 22, 48, 0.7),fontSize: SizeConfig.deviceHeight*0.02),),
-                        Text('Release date: 8-04-2022',style:GoogleFonts.signika(color:Colors.grey)),
-                        Text('Due date:14-04-2022',style:GoogleFonts.signika(color:Colors.grey)),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text('You got\n this!',style:GoogleFonts.signika(color:Color.fromRGBO(4, 22, 48, 0.7),fontSize: SizeConfig.deviceHeight*0.025)),
-                            Image.asset('assets/1.png')
-                          ],
-                        )
-
-                      ]
-                  ),
+                    decoration:  BoxDecoration(
+                      color:Colors.transparent,
+                image: DecorationImage(
+                image: AssetImage('assets/snake.jpeg'
                 ),
+                  fit: BoxFit.fill)),
+                    ),
               ),
-              Card(
-                color: Colors.white,
-                elevation: 5,
-                child: Image.asset('assets/2.png')
-
-
-
-              ),
-
             ],
           ),
-        ),
+        )
       );
   }
 }
