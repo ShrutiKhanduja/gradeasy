@@ -1,15 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gradeasy/Tetris/Game.dart';
+import 'package:gradeasy/Tetris/gameScreen.dart';
 import 'package:gradeasy/login.dart';
+import 'package:provider/provider.dart';
 
 import 'SplashScreen.dart';
-import 'Tetris/gameScreen.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(
+  ChangeNotifierProvider(
+    create: (context) => Data(),
+    child: MyApp(),
+  ),
+);
+
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -29,7 +33,7 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
 
         ),
-        home:SplashScreen()
+        home:LoginScreen()
     );
   }
 }
