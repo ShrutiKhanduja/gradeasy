@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gradeasy/login.dart';
 
 import 'SplashScreen.dart';
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
 
         ),
-        home:SplashScreen()
+        home:LoginScreen()
     );
   }
 }
