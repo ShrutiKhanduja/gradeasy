@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:gradeasy/HomeScreen.dart';
 import 'package:gradeasy/Snake_game.dart';
 import 'package:gradeasy/Tetris/gameScreen.dart';
+import 'package:gradeasy/login.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'bottom_navBar.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -14,19 +18,34 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  late SharedPreferences prefs;
+  String p='';
+  void pref()async {
+    prefs= await SharedPreferences.getInstance();
+    p=prefs.getString('name')!;
+  }
+  @override
+  void initState() {
+  pref();
+
+  Future.delayed(const Duration(seconds: 3), () async {
+    (p!='')?Navigator.pushReplacement(context,MaterialPageRoute(builder:(context)=> BottomNavBar())):Navigator.pushReplacement(context,MaterialPageRoute(builder:(context)=> LoginScreen()));
+
+
+
+
+  });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 1000,
-      width: 500,
-      child:AnimatedSplashScreen(
-        animationDuration: Duration(milliseconds: 100),
-        nextScreen: Tetris(),
-        backgroundColor:HexColor("#041630") ,
-        splash: Column(
+    return Scaffold(
+      backgroundColor:HexColor("#041630") ,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-Image.asset("LOGO2.png",height: 200,width: 200),
+Image.asset("assets/LOGO2.png"),
             // SizedBox(
             //   width: 250.0,
             //   child: DefaultTextStyle(
@@ -45,7 +64,7 @@ Image.asset("LOGO2.png",height: 200,width: 200),
         ],
         ),
 
-      ),
+
     );
   }
 }

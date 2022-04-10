@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 import 'classlistview.dart';
@@ -16,7 +17,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
+  void _launchURL(String url) async {
+    if (!await launch(url)) throw 'Could not launch $url';
+  }
   List<ClassListData> mealsListData=[];
   @override
   void initState() {
@@ -37,31 +40,11 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Stack(
-              children: [
-                Container(
-                  height:SizeConfig.deviceHeight*0.15,
-                  decoration: BoxDecoration(
-                      color: Color.fromRGBO(4, 22, 48, 1),
-                      borderRadius: BorderRadius.only(bottomRight: Radius.circular(40))
-                  ),
-
-                ),
-                Positioned(
-                  top: SizeConfig.deviceHeight*0.06,
-                  child: Container(
-                      height: SizeConfig.deviceHeight*0.07,
-                      width:SizeConfig.deviceWidth*0.6,
-                      decoration: BoxDecoration(
-                          color:Colors.white,
-                          borderRadius: BorderRadius.only(topRight: Radius.circular(20),bottomRight: Radius.circular(20))),
-                      child: Center(
-                        child: Text('Your lectures',style:GoogleFonts.pacifico(color:Color.fromRGBO(4, 22, 48, 1),fontSize:SizeConfig.deviceHeight*0.03),
-                        ),
-                      )),
-                )
-              ],
-            ),
+            SizedBox(height:SizeConfig.deviceHeight*0.06),
+           Padding(
+             padding: const EdgeInsets.all(8.0),
+             child: Text('YOUR LECTURES',style:GoogleFonts.signika(color:Color.fromRGBO(4, 22, 48, 1),fontSize: SizeConfig.deviceHeight*0.03,fontWeight: FontWeight.bold)),
+           ),
 
             Container(
               height:SizeConfig.deviceHeight*0.27,
@@ -232,32 +215,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
               ),
             ),
-            Stack(
-              children: [
-                Container(
-                  height:SizeConfig.deviceHeight*0.15,
-
-                  decoration: BoxDecoration(
-                      color: Color.fromRGBO(4, 22, 48, 1),
-                    borderRadius: BorderRadius.only(topLeft: Radius.circular(40))
-                  ),
-
-                ),
-                Positioned(
-                  top:SizeConfig.deviceHeight*0.06,
-                  left:SizeConfig.deviceWidth*0.4,
-                  child: Container(
-                      height: SizeConfig.deviceHeight*0.07,
-                      width:SizeConfig.deviceWidth*0.6,
-                      decoration: BoxDecoration(
-                          color:Colors.white,
-                          borderRadius: BorderRadius.only(topLeft: Radius.circular(20),bottomLeft: Radius.circular(20))),
-                      child: Center(
-                        child: Text('Your assignments',style:GoogleFonts.pacifico(color:Color.fromRGBO(4, 22, 48, 1),fontSize:SizeConfig.deviceHeight*0.03),
-                        ),
-                      )),
-                )
-              ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('YOUR ASSIGNMENTS',style:GoogleFonts.signika(color:Color.fromRGBO(4, 22, 48, 1),fontSize: SizeConfig.deviceHeight*0.03,fontWeight: FontWeight.bold)),
             ),
             Container(
               height:SizeConfig.deviceHeight*0.45,
@@ -270,84 +230,104 @@ class _HomeScreenState extends State<HomeScreen> {
                     mainAxisExtent: 150
                 ),
                 children: [
-                  Card(
-                    color: Colors.white,
-                    elevation: 5,
-                    child: Column(
-
-                      children:[
-                        Text('Compiler Design',style:GoogleFonts.pacifico(color:Color.fromRGBO(4, 22, 48, 0.7),fontSize: SizeConfig.deviceHeight*0.02),),
-                        Text('Release date: 8-04-2022',style:GoogleFonts.signika(color:Colors.grey)),
-                        Text('Due date:14-04-2022',style:GoogleFonts.signika(color:Colors.grey)),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text('You got\n this!',style:GoogleFonts.signika(color:Color.fromRGBO(4, 22, 48, 0.7),fontSize: SizeConfig.deviceHeight*0.025)),
-                            Image.asset('assets/1.png')
-                          ],
-                        )
-
-                      ]
-                    ),
-                  ),
-                  Card(
-                    color: Colors.white,
-                    elevation: 5,
-                    child: Column(
+                  InkWell(
+                    onTap:(){
+                      _launchURL('https://manavrachna.edu.in/student-erp/');
+                    },
+                    child: Card(
+                      color: Colors.white,
+                      elevation: 5,
+                      child: Column(
 
                         children:[
-                          Text('ADBMS',style:GoogleFonts.pacifico(color:Color.fromRGBO(4, 22, 48, 0.7),fontSize: SizeConfig.deviceHeight*0.02),),
-                          Text('Release date: 6-04-2022',style:GoogleFonts.signika(color:Colors.grey)),
-                          Text('Due date:11-04-2022',style:GoogleFonts.signika(color:Colors.grey)),
+                          Text('Compiler Design',style:GoogleFonts.signika(color:Color.fromRGBO(4, 22, 48, 0.7),fontSize: SizeConfig.deviceHeight*0.023,fontWeight: FontWeight.bold),),
+                          Text('Release date: 8-04-2022',style:GoogleFonts.signika(color:Colors.grey)),
+                          Text('Due date:14-04-2022',style:GoogleFonts.signika(color:Colors.grey)),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Text('Hurry\n up!',style:GoogleFonts.signika(color:Color.fromRGBO(4, 22, 48, 0.7),fontSize: SizeConfig.deviceHeight*0.025)),
-                              Image.asset('assets/2.png')
+                              Text('You got\n this!',style:GoogleFonts.signika(color:Color.fromRGBO(4, 22, 48, 0.7),fontSize: SizeConfig.deviceHeight*0.025)),
+                              Image.asset('assets/1.png')
                             ],
                           )
 
                         ]
+                      ),
                     ),
                   ),
-                  Card(
-                    color: Colors.white,
-                    elevation: 5,
-                    child: Column(
+                  InkWell(
+                    onTap:(){
+                      _launchURL('https://manavrachna.edu.in/student-erp/');
+                    },
+                    child: Card(
+                      color: Colors.white,
+                      elevation: 5,
+                      child: Column(
 
-                        children:[
-                          Text('IOT',style:GoogleFonts.pacifico(color:Color.fromRGBO(4, 22, 48, 0.7),fontSize: SizeConfig.deviceHeight*0.02),),
-                          Text('Release date: 11-04-2022',style:GoogleFonts.signika(color:Colors.grey)),
-                          Text('Due date:17-04-2022',style:GoogleFonts.signika(color:Colors.grey)),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text('Have\n time!',style:GoogleFonts.signika(color:Color.fromRGBO(4, 22, 48, 0.7),fontSize: SizeConfig.deviceHeight*0.025)),
-                              Image.asset('assets/3.png')
-                            ],
-                          )
+                          children:[
+                            Text('ADBMS',style:GoogleFonts.signika(color:Color.fromRGBO(4, 22, 48, 0.7),fontSize: SizeConfig.deviceHeight*0.023,fontWeight: FontWeight.bold),),
+                            Text('Release date: 6-04-2022',style:GoogleFonts.signika(color:Colors.grey)),
+                            Text('Due date:11-04-2022',style:GoogleFonts.signika(color:Colors.grey)),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text('Hurry\n up!',style:GoogleFonts.signika(color:Color.fromRGBO(4, 22, 48, 0.7),fontSize: SizeConfig.deviceHeight*0.025)),
+                                Image.asset('assets/2.png')
+                              ],
+                            )
 
-                        ]
+                          ]
+                      ),
                     ),
                   ),
-                  Card(
-                    color: Colors.white,
-                    elevation: 5,
-                    child: Column(
+                  InkWell(
+                    onTap: (){
+                      _launchURL('https://manavrachna.edu.in/student-erp/');
+                    },
+                    child: Card(
+                      color: Colors.white,
+                      elevation: 5,
+                      child: Column(
 
-                        children:[
-                          Text('Aptitude',style:GoogleFonts.pacifico(color:Color.fromRGBO(4, 22, 48, 0.7),fontSize: SizeConfig.deviceHeight*0.02),),
-                          Text('Release date: 06-04-2022',style:GoogleFonts.signika(color:Colors.grey)),
-                          Text('Due date:12-04-2022',style:GoogleFonts.signika(color:Colors.grey)),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text('Got no\n chill!',style:GoogleFonts.signika(color:Color.fromRGBO(4, 22, 48, 0.7),fontSize: SizeConfig.deviceHeight*0.025)),
-                              Image.asset('assets/4.png')
-                            ],
-                          )
+                          children:[
+                            Text('IOT',style:GoogleFonts.signika(color:Color.fromRGBO(4, 22, 48, 0.7),fontSize: SizeConfig.deviceHeight*0.023,fontWeight: FontWeight.bold),),
+                            Text('Release date: 11-04-2022',style:GoogleFonts.signika(color:Colors.grey)),
+                            Text('Due date:17-04-2022',style:GoogleFonts.signika(color:Colors.grey)),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text('Have\n time!',style:GoogleFonts.signika(color:Color.fromRGBO(4, 22, 48, 0.7),fontSize: SizeConfig.deviceHeight*0.025)),
+                                Image.asset('assets/3.png')
+                              ],
+                            )
 
-                        ]
+                          ]
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap:(){
+                      _launchURL('https://manavrachna.edu.in/student-erp/');
+                    },
+                    child: Card(
+                      color: Colors.white,
+                      elevation: 5,
+                      child: Column(
+
+                          children:[
+                            Text('Aptitude',style:GoogleFonts.signika(color:Color.fromRGBO(4, 22, 48, 0.7),fontSize: SizeConfig.deviceHeight*0.023,fontWeight: FontWeight.bold),),
+                            Text('Release date: 06-04-2022',style:GoogleFonts.signika(color:Colors.grey)),
+                            Text('Due date:12-04-2022',style:GoogleFonts.signika(color:Colors.grey)),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text('Got no\n chill!',style:GoogleFonts.signika(color:Color.fromRGBO(4, 22, 48, 0.7),fontSize: SizeConfig.deviceHeight*0.025)),
+                                Image.asset('assets/4.png')
+                              ],
+                            )
+
+                          ]
+                      ),
                     ),
                   )
                 ],

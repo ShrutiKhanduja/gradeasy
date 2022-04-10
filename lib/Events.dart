@@ -18,27 +18,10 @@ class _EventsScreenState extends State<EventsScreen> {
     return Scaffold(
       body:Column(
         children: [
-          Stack(
-            children: [
-              Container(
-                height:SizeConfig.deviceHeight*0.2,
-                color: Color.fromRGBO(4, 22, 48, 1),
-
-              ),
-              Positioned(
-                top: SizeConfig.deviceHeight*0.1,
-                child: Container(
-                  height: SizeConfig.deviceHeight*0.07,
-                  width:SizeConfig.deviceWidth*0.6,
-                  decoration: BoxDecoration(
-                    color:Colors.white,
-                      borderRadius: BorderRadius.only(topRight: Radius.circular(20),bottomRight: Radius.circular(20))),
-                     child: Center(
-                       child: Text('Upcoming events',style:GoogleFonts.pacifico(color:Color.fromRGBO(4, 22, 48, 1),fontSize:SizeConfig.deviceHeight*0.03),
-                ),
-                     )),
-              )
-            ],
+          SizedBox(height:SizeConfig.deviceHeight*0.06),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text('UPCOMING EVENTS',style:GoogleFonts.signika(color:Color.fromRGBO(4, 22, 48, 1),fontSize: SizeConfig.deviceHeight*0.03,fontWeight: FontWeight.bold)),
           ),
 
          Stack(

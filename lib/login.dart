@@ -61,7 +61,8 @@ class _LoginScreenState extends State<LoginScreen> {
           SizedBox(height:SizeConfig.deviceHeight*0.06),
           Column(
             children:[
-              Text('Welcome to Gradeasy!',style:GoogleFonts.pacifico(color:Color.fromRGBO(4, 22, 48, 1),fontSize: SizeConfig.deviceHeight*0.04
+              SizedBox(height:SizeConfig.deviceHeight*0.03),
+              Text('WELCOME TO GRADEASY!',style:GoogleFonts.signika(color:Color.fromRGBO(4, 22, 48, 1),fontSize: SizeConfig.deviceHeight*0.035
 
 
               )),
@@ -75,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.email,color:_myFocusNodeEmail.hasFocus?Color.fromRGBO(4, 22, 48, 1):Colors.grey ,),
                     labelText: "Enter your college email",
-                    labelStyle: GoogleFonts.pacifico(color:_myFocusNodeEmail.hasFocus?Color.fromRGBO(4, 22, 48, 1):Colors.grey),
+                    labelStyle: GoogleFonts.signika(color:_myFocusNodeEmail.hasFocus?Color.fromRGBO(4, 22, 48, 1):Colors.grey),
                     fillColor: Colors.white,
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
@@ -99,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     }
                   },
                   keyboardType: TextInputType.emailAddress,
-                  style: GoogleFonts.pacifico(),
+                  style: GoogleFonts.signika(),
                 ),
               ),
               SizedBox(height:SizeConfig.deviceHeight*0.02),
@@ -123,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
 
                     labelText: "Enter Password",
-                    labelStyle: GoogleFonts.pacifico(color:_myFocusNodePassword.hasFocus?Color.fromRGBO(4, 22, 48, 1):Colors.grey),
+                    labelStyle: GoogleFonts.signika(color:_myFocusNodePassword.hasFocus?Color.fromRGBO(4, 22, 48, 1):Colors.grey),
                     fillColor: Colors.white,
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20.0),
@@ -147,7 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     }
                   },
                   keyboardType: TextInputType.text,
-                  style: GoogleFonts.pacifico(),
+                  style: GoogleFonts.signika(),
                 ),
               ),
               SizedBox(height:SizeConfig.deviceHeight*0.04),

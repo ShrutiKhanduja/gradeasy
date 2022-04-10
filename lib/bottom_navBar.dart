@@ -100,14 +100,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
           activeColorPrimary: Color.fromRGBO(4, 22, 48, 0.3),
           inactiveColorPrimary: Colors.grey[400],
           title:'Home',
-          textStyle: GoogleFonts.pacifico(color:Colors.black,fontSize:SizeConfig.deviceHeight*0.018)
+          textStyle: GoogleFonts.signika(color:Colors.black,fontSize:SizeConfig.deviceHeight*0.018)
       ),
       PersistentBottomNavBarItem(
           icon: const Icon(Icons.event),
           activeColorPrimary: Color.fromRGBO(4, 22, 48, 0.3),
           inactiveColorPrimary: Colors.grey[400],
           title:'Events',
-          textStyle: GoogleFonts.pacifico(color:Colors.black,fontSize:SizeConfig.deviceHeight*0.018)
+          textStyle: GoogleFonts.signika(color:Colors.black,fontSize:SizeConfig.deviceHeight*0.018)
       ),
 
       PersistentBottomNavBarItem(
@@ -115,7 +115,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           activeColorPrimary: Color.fromRGBO(4, 22, 48, 0.3),
           inactiveColorPrimary: Colors.grey[400],
           title:'Societies',
-          textStyle: GoogleFonts.pacifico(color:Colors.black,fontSize:SizeConfig.deviceHeight*0.018)
+          textStyle: GoogleFonts.signika(color:Colors.black,fontSize:SizeConfig.deviceHeight*0.018)
 
 
       ),
@@ -124,14 +124,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
           activeColorPrimary: Color.fromRGBO(4, 22, 48, 0.3),
           inactiveColorPrimary: Colors.grey[400],
           title:'Fun Zone',
-          textStyle: GoogleFonts.pacifico(color:Colors.black,fontSize:SizeConfig.deviceHeight*0.018)
+          textStyle: GoogleFonts.signika(color:Colors.black,fontSize:SizeConfig.deviceHeight*0.018)
       ),
       PersistentBottomNavBarItem(
           icon: Icon(Icons.account_circle),
           activeColorPrimary: Color.fromRGBO(4, 22, 48, 0.3),
           inactiveColorPrimary: Colors.grey[400],
           title:'Account',
-          textStyle: GoogleFonts.pacifico(color:Colors.black,fontSize:SizeConfig.deviceHeight*0.018)
+          textStyle: GoogleFonts.signika(color:Colors.black,fontSize:SizeConfig.deviceHeight*0.018)
       ),
 
     ];
