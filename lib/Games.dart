@@ -29,13 +29,15 @@ class _GamesState extends State<Games> {
                 },
                 child: Container(
                     height:SizeConfig.deviceHeight*0.3,
-
-                    decoration:  BoxDecoration(
-                      color:Colors.transparent,
-                image: DecorationImage(
-                image: AssetImage('assets/snake.jpeg'
-                ),
-                  fit: BoxFit.fill)),
+child: Card(
+    child: Image.asset(
+      'assets/snake.jpeg',
+      fit: BoxFit.cover,
+    ),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10.0),
+    ),
+                   ),
                     ),
               ),
             ],
